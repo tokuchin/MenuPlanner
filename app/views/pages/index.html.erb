@@ -1,0 +1,20 @@
+<div class="top-hero-wrapper text-center">
+  <div class="container top-hero-container">
+    <h1 class="text-white">MenuPlanner</h1>
+    <h2 class="text-white">MenuPlanner makes daily menu planning easy!</h2>
+    <h2 class="text-white">〜シンプルな献立管理をご提案します〜</h2>
+    <div class="row">
+      <% if !logged_in? %>
+        <div class="col-md-offset-3 col-md-3">
+          <%= link_to 'Sign up', new_user_path, class: 'btn btn-block btn-white' %>
+        </div>
+        <div class="col-md-3">
+          <%= link_to 'Log in', login_path, class: 'btn btn-block btn-white' %>
+        </div>
+      <% end %>
+    </div>      
+  </div>
+</div>
+
+<p>Image by <a href="https://pixabay.com/users/daria-yakovleva-3938704/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2068215">Дарья Яковлева</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2068215">Pixabay</a></p> 
+  
