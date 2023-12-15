@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
 
-  resources :menus
-  
+  # menu_path(memnus#show)をgetするには:idが必要となるが、同日のmenu.recipesを「全て」表示したいため、都合が悪い。
+  # :collectionを使用すると、:idが不要になる。
+  # show_menus_menus_pathのroutingが生成される
+  resources :menus do
+    collection do
+      get 'show_menus'
+    end
+  end
 end

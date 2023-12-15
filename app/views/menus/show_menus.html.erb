@@ -1,0 +1,24 @@
+<h1>献立</h1>
+<%= @date %>
+
+<div class="recipe-index-wrapper">
+  <div class="container">
+    <% @menus.each do |menu| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="recipe-index-single">
+            <h2 class="recipe-title">
+              <%= menu.recipe.title %>
+            </h2>            
+            <h2 class="recipe-author">
+              by <%= menu.recipe.user.name %>　さん
+            </h2>
+            <%= image_tag menu.recipe.image.url %>
+            <%= menu.recipe.description %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
