@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'menus/new'
   get 'recipes/new'
   get 'sessions/new'
   get 'users/new'
@@ -16,5 +17,7 @@ Rails.application.routes.draw do
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
+
+  resources :menus
   
 end

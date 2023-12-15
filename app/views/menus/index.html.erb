@@ -1,0 +1,14 @@
+<%= month_calendar(attribute: :date, events: @menus) do |date, menus| %>
+  <%= date.day %>
+  
+  <% menus.each do |menu| %>
+    <div>
+      <%= link_to menu.recipe.title, menu.recipe %>
+      <%= link_to '❎︎',menu_path(menu.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    
+  <% end %>
+  
+  <%= link_to '➕',new_menu_path(date: date) %>
+  
+<% end %>

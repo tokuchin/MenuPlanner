@@ -72,3 +72,4 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'font-awesome-sass' #font-awesomeアイコン使用のため
+gem "simple_calendar", "~> 2.4"
