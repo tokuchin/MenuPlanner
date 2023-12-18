@@ -25,7 +25,7 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
   
-  def show_menus　#その日のmenuに登録したrecipes全てを表示する
+  def show_menus #その日のmenuに登録したrecipes全てを表示する
     @date = params[:date] #shows_menus画面遷移時点でdateはクエリで引き継がれる。@dateへ保存する。
     @menus = current_user.menus.where(date: @date) #find_byは一つのレコードしか取れないため、whereを使用
   end
