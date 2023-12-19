@@ -18,16 +18,30 @@
               <%= link_to favorites_path(recipe_id: recipe.id), method: :post do %>
                 <i class="fa-regular fa-heart recipe-index-favorite-black-icon"></i>
               <% end %>
-              <% else %>
+            <% else %>
               <%= link_to favorites_path(recipe_id: recipe.id), method: :delete do %>
                 <i class="fa-regular fa-heart recipe-index-favorite-red-icon"></i>
               <% end %>
-              <%= recipe.favorite_users.count %>
             <% end %>
-            <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
+            <%= recipe.favorite_users.count %>
+            
+            <%= link_to new_comment_path(recipe_id: recipe.id) do %>
+              <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
+            <% end %>
+            <%= recipe.comments.count %>
             <p class="recipe-text">
               <%= recipe.description %>
             </p>
+            <% if recipe.comments.present? %>
+              <p class="comment">
+                <%= "コメント" %>
+              </p>
+              <ul class="comment-description">
+                <% recipe.comments.each do |comment| %>
+                  <li><%= comment.description %> by <%= comment.user.name %> さん</li>
+                <% end %>             
+              </ul>
+            <% end %>
           </div>
         </div>
       </div>

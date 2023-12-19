@@ -15,6 +15,21 @@
             </h2>
             <%= image_tag menu.recipe.image.url %>
             <%= menu.recipe.description %>
+            
+            <div>
+            <% if menu.comments.present? %>
+              <p class="comment">
+                <%= "家族コメント" %>
+              </p>
+              <ul class="comment-description">
+                <% menu.comments.each do |comment| %>
+                  <li><%= comment.description %> by <%= comment.user.name %> さん</li>
+                <% end %>   
+              </ul>
+            <% end %>
+            <%= link_to '家族コメント登録はこちら', new_comment_path(menu_id: menu.id) %>
+            </div>
+            
           </div>
         </div>
       </div>

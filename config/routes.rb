@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/new'
   get 'menus/new'
   get 'recipes/new'
   get 'sessions/new'
@@ -26,4 +27,7 @@ Rails.application.routes.draw do
       get 'show_menus'
     end
   end
+  
+  resources :comments
+  
 end
