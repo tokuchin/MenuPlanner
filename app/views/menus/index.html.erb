@@ -1,14 +1,16 @@
+<div class="calendar-wrapper">
 <%= month_calendar(attribute: :date, events: @menus) do |date, menus| %>
-  <%= link_to date.day, show_menus_menus_path(date: date) %>
-  
-  <% menus.each do |menu| %>
-    <div>
-      <%= link_to menu.recipe.title, edit_menu_path(menu.id) %>
-      <%= link_to '❎︎',menu_path(menu.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-    
-  <% end %>
-  
-  <%= link_to '➕',new_menu_path(date: date) %>
-  
+  <div class="calendar-day">
+    <%= link_to date.day, show_menus_menus_path(date: date) %>
+  </div>
+      <div class="calendar-menu">
+        <% menus.each do |menu| %>
+          <%= link_to menu.recipe.title, edit_menu_path(menu.id) %>
+          <%= link_to '❎︎',menu_path(menu.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+      <div class="calendar-menu">
+        <%= link_to '➕',new_menu_path(date: date) %>
+      </div>
 <% end %>
+</div>

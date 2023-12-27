@@ -116,56 +116,92 @@ h1, h2 {
 
 
 
+//レシピ集
+
+.fixed-button {
+  position: fixed;
+  top: 70px;
+  right: 55px;
+  z-index: 1000; /* 他の要素より上に表示 */
+  font-size: 150%;
+}
 
 .recipe-index-wrapper {
-  padding-top: 70px;
+  margin-top: 100px;
   background-color: #fafafa;
+  
   .recipe-index-single {
     background-color: #fff;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 30px;
+    padding-left: 20px;
+    margin-top: 20px;
     border: 1px solid #e6ecf0;
     border-radius: 3px;
+    
+    .recipe-image-for-index {
+      position: relative;
+      max-width: 670px;
+      width: 100%;
+      padding-bottom: 75%; /* 4:3のアスペクト比に対応 */
+      margin-bottom: 20px;
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 画像を完全に表示 */
+      }
+    }
+    
+    .recipe-title-author {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px; /* タイトル、作者、作成日の間に隙間を設定 */
+    }
+    
     .recipe-title {
-      padding-right: 20px;
-      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 5px;
       color: black;
     }
+    
     .recipe-author {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-left: 10px;
       font-size: 16px;
     }
-
-    .recipe-text {
-      padding-right: 20px;
-      padding-left: 20px;
+    
+    .recipe-created_at {
+      padding-left: 10px;
+      font-size: 16px;
+      color: #7d7d7d;
     }
-
-    img {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      width: 100%;
+    
+    .recipe-text {
+      margin-top: 20px;
+      padding-right: 20px;
+      padding-left: 5px;
     }
 
     .recipe-index-icon {
       width: 35px;
       height: 30px;
       margin-left: 20px;
+      margin-bottom: 14px;
     }
   }
 }
 
     .recipe-index-favorite-black-icon {
       font-size: 220%;
-      margin-left: 20px;
+      margin-left: 10px;
       color: black;
     }
 
     .recipe-index-favorite-red-icon {
       font-size: 220%;
-      margin-left: 20px;
+      margin-left: 10px;
       color: red;
     }
 
@@ -178,6 +214,94 @@ h1, h2 {
 
     .comment-description {
       padding-right: 20px;
-      padding-left: 20px;
-      list-style:none
+      padding-left: 40px;
+      //max-height: 150px; /* 表示したい最大の高さを指定 */
+      //overflow-y: auto; /* 高さを超えた分はスクロールできるように */
     }
+    
+    .comment-user {
+      font-size: 80%;
+      color: #7d7d7d;
+      margin-left: 10px;
+    }
+    
+  
+//献立（Menu）カレンダー
+    
+.calendar-wrapper {
+  margin-top: 100px;
+}
+
+.calendar-day {
+  font-size: 24px;
+}
+
+.calendar-menu {
+  font-size: 14px;
+  li {
+    list-style: none;
+  }
+}
+
+.simple-calendar thead th {
+  background-color: #ffffff; /* 曜日の背景色を白に変更 */
+  font-size: 24px; /* 任意のフォントサイズに調整 */
+  text-align: center;
+}
+
+.simple-calendar tbody td {
+  background-color: #ffffff; /* カレンダーのセルの背景色を変更 */
+  border: 1px solid #gray; /* セルのボーダーを設定（任意） */
+}
+
+/* カレンダー内で今日の日付を特別に強調する場合 */
+.simple-calendar tbody td.today {
+  background-color: #ffcccc;
+}
+
+/* カレンダーのデフォルトの高さを設定 */
+.simple-calendar tbody td {
+  height: 300px; /* 任意の高さに調整 */
+}
+
+/* 何も予定がない場合の高さを調整 */
+.simple-calendar tbody td:not(.event) {
+  height: 80px; /* 任意の高さに調整 */
+}
+
+/* イベントがある場合のスタイル（任意） */
+.simple-calendar tbody td.event {
+  background-color: #ffeecc;
+  border: 1px solid #ccc;
+  height: 80px; /* 任意の高さに調整 */
+}
+
+/* スマートフォンサイズのスタイル */
+//@media screen and (max-device-width: 768px) {
+@media screen and (max-width: 500px) {
+  .calendar-wrapper {
+    height: auto !important; /* 高さを自動に設定する */
+  }
+  
+  /* カレンダーのデフォルトの高さを設定 */
+  .simple-calendar tbody td {
+    height: 300px; /* 任意の高さに調整 */
+  }
+  
+  /* 何も予定がない場合の高さを調整 */
+  .simple-calendar tbody td:not(.event) {
+    height: 300px; /* 任意の高さに調整 */
+  }
+  
+  .calendar-day {
+    font-size: 50px !important;
+    /* 他のスタイルがあればそれらと併記 */
+  }
+  
+  .calendar-menu {
+    font-size: 20px !important;
+    li {
+      list-style: none !important;
+    }
+  }
+}

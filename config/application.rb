@@ -13,6 +13,10 @@ module MenuPlanner
     
     # 下に追加
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    
+    #simple_calendarの表示をカスタマイズ　/MenuPlanner/config/locales/simple_calendar.yml
+    config.i18n.default_locale = :ja
+    
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

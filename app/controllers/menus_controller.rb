@@ -1,6 +1,8 @@
 class MenusController < ApplicationController
   def index
     @menus = current_user.menus
+    #@inviter_menus = Menu.where(user_id: 6) #自分がinvitee.idを持つ場合は、そのinviterのuser_idの献立を取得するように設定する
+    #@menus = (current_user.menus + @inviter_menus).uniq #uniqにより、重複する場合は、重複のないレコードにする。不要？？？
   end
 
   def new

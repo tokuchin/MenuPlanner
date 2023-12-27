@@ -1,51 +1,63 @@
-<h1>レシピ集</h1>
-<%= link_to 'レシピ登録はこちらです', new_recipe_path %>
+<%= link_to 'レシピ登録', new_recipe_path, class: 'btn btn-warning fixed-button' %>
 
 <div class="recipe-index-wrapper">
-  <div class="container">
-    <% @recipes.each do |recipe| %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="recipe-index-single">
-            <h2 class="recipe-title">
-              <%= recipe.title %>
-            </h2>            
-            <h2 class="recipe-author">
-              by <%= recipe.user.name %>　さん
-            </h2>
-            <%= image_tag recipe.image.url %>
-            <% if !recipe.favorite_users.include?(current_user) %>
-              <%= link_to favorites_path(recipe_id: recipe.id), method: :post do %>
-                <i class="fa-regular fa-heart recipe-index-favorite-black-icon"></i>
-              <% end %>
-            <% else %>
-              <%= link_to favorites_path(recipe_id: recipe.id), method: :delete do %>
-                <i class="fa-regular fa-heart recipe-index-favorite-red-icon"></i>
-              <% end %>
-            <% end %>
-            <%= recipe.favorite_users.count %>
-            
-            <%= link_to new_comment_path(recipe_id: recipe.id) do %>
-              <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
-            <% end %>
-            <%= recipe.comments.count %>
-            <p class="recipe-text">
-              <%= recipe.description %>
-            </p>
-            <% if recipe.comments.present? %>
-              <p class="comment">
-                <%= "コメント" %>
+  <% @recipes.each do |recipe| %>
+    <div class="container">
+      <div class="recipe-index-single">      
+        <div class="row">
+          <div class="col-md-4">
+            <div class="recipe-image-for-index">
+              <%= image_tag recipe.image.url %>            
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="recipe-title-author">
+              <h2 class="recipe-title">
+                <%= recipe.title %>
+              </h2>            
+              <span class="recipe-author">
+                by <%= recipe.user.name %> さん
+              </span>
+              <span class="recipe-created_at">
+                作成日 <%= recipe.created_at.in_time_zone("Tokyo").strftime("%Y-%m-%d") %>
+              </span>    
+            </div> 
+              <p class="recipe-text">
+                <%= recipe.description %>
               </p>
-              <ul class="comment-description">
-                <% recipe.comments.each do |comment| %>
-                  <li><%= comment.description %> by <%= comment.user.name %> さん</li>
-                <% end %>             
-              </ul>
-            <% end %>
+              <% if !recipe.favorite_users.include?(current_user) %>
+                <%= link_to favorites_path(recipe_id: recipe.id), method: :post do %>
+                  <i class="fa-regular fa-heart recipe-index-favorite-black-icon"></i>
+                <% end %>
+              <% else %>
+                <%= link_to favorites_path(recipe_id: recipe.id), method: :delete do %>
+                  <i class="fa-regular fa-heart recipe-index-favorite-red-icon"></i>
+                <% end %>
+              <% end %>
+              <%= recipe.favorite_users.count %>
+              
+              <%= link_to new_comment_path(recipe_id: recipe.id) do %>
+                <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
+              <% end %>
+              <%= recipe.comments.count %>
+              <% if recipe.comments.present? %>
+                <p class="comment">
+                  <%= "コメント" %>
+                </p>
+                <ul class="comment-description">
+                  <% recipe.comments.each do |comment| %>
+                    <li>
+                      <%= comment.description %>
+                        <span class="comment-user">
+                          by <%= comment.user.name %> さん (<%= comment.created_at.in_time_zone("Tokyo").strftime("%Y-%m-%d") %>)
+                        </span>
+                    </li>
+                  <% end %>             
+                </ul>
+              <% end %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
-
