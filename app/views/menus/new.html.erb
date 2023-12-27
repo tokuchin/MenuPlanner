@@ -6,12 +6,6 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">献立登録</h1>
         <%= form_for @menu do |f| %>
-        <!--
-          <div class="form-group">
-            <%= f.label :date %>
-            <%= f.date_select :date, class: 'form-control' %>
-          </div>
-          -->
           <%= f.hidden_field :date, value: @date %> <!-- カレンダー画面よりクエリとして:dateを取得し@dateに代入-->
           <div class="form-group">
             <%= f.label :recipe_id %>
