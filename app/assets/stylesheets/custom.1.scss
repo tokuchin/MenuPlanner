@@ -115,24 +115,6 @@ h1, h2 {
 }
 
 
-//navbar
-
-.navbar {
-  background-color: #000000 /* 背景色 */
-}
-
-.navbar-brand {
-  height: 50px; /* 適切な高さに調整してください */
-  padding: 15px 0; /* 適切なパディングを追加してください */
-}
-
-.navbar-nav img {
-  height: 30px; /* 適切な高さに調整してください */
-  width: auto; /* 高さに合わせて幅を自動調整 */
-  margin-top: 10px; /* 適切なマージンを追加してください */
-}
-
-
 
 //レシピ集
 
@@ -144,101 +126,105 @@ h1, h2 {
   font-size: 150%;
 }
 
-.recipe-index-single-wrapper {
-  margin-bottom: 30px;
+.recipe-index-wrapper {
+  margin-top: 100px;
+  background-color: #fafafa;
+  
+  .recipe-index-single {
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    
+    .recipe-image-for-index {
+      position: relative;
+      max-width: 670px;
+      width: 100%;
+      padding-bottom: 75%; /* 4:3のアスペクト比に対応 */
+      margin-bottom: 20px;
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 画像を完全に表示 */
+      }
+    }
+    
+    .recipe-title-author {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px; /* タイトル、作者、作成日の間に隙間を設定 */
+    }
+    
+    .recipe-title {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 5px;
+      color: black;
+    }
+    
+    .recipe-author {
+      padding-left: 10px;
+      font-size: 16px;
+    }
+    
+    .recipe-created_at {
+      padding-left: 10px;
+      font-size: 16px;
+      color: #7d7d7d;
+    }
+    
+    .recipe-text {
+      margin-top: 20px;
+      padding-right: 20px;
+      padding-left: 5px;
+    }
+
+    .recipe-index-icon {
+      width: 35px;
+      height: 30px;
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+  }
 }
 
-.recipe-index-img {
-  position: relative; /* relative = 子要素.imgの基準 */
-  width: 100%;
-  height: 0; /* .recipe-index-img 要素自体は高さがゼロで、子要素がはみ出しても非表示 */
-  padding-top: 75%; /* アスペクト比 4:3 の場合 (3 / 4 * 100%) ここでは.recipe-index-img 要素に対して設定している */
-  overflow: hidden;
-  margin-bottom: 5px;
-}
+    .recipe-index-favorite-black-icon {
+      font-size: 220%;
+      margin-left: 10px;
+      color: black;
+    }
 
-.recipe-index-img img {
-  position: absolute; /* 親要素.recipe-index-img に対して相対的な位置を指定 */
-  top: 0; /* absoluteが指定された場合に設定する親要素に対する基準位置、今回は左上隅 */
-  left: 0; /* absoluteが指定された場合に設定する親要素に対する基準位置、今回は左上隅 */
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 画像比率をそのままに、中央で自動的でトリミング */
-}
+    .recipe-index-favorite-red-icon {
+      font-size: 220%;
+      margin-left: 10px;
+      color: red;
+    }
 
-.recipe-title-author {
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 10px; /* タイトル、作者、作成日の間に隙間を設定 */
-}
+    .comment {
+      font-size: 20px;
+      margin-top: 15px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
 
-.recipe-title {
-  font-size: 32px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0px;
-  color: black;
-}
-
-.recipe-author {
-  padding-left: 10px;
-  font-size: 20px;
-}
-
-.recipe-created_at {
-  padding-left: 10px;
-  font-size: 16px;
-  color: #7d7d7d;
-}
-
-.recipe-text {
-  font-size: 16px;
-  margin-top: 20px;
-  padding-right: 20px;
-  padding-left: 5px;
-}
-
-.recipe-index-icon {
-  width: 35px;
-  height: 30px;
-  margin-left: 20px;
-  margin-bottom: 14px;
-}
-
-.recipe-index-favorite-black-icon {
-  font-size: 300%;
-  margin-left: 10px;
-  color: black;
-}
-
-.recipe-index-favorite-red-icon {
-  font-size: 300%;
-  margin-left: 10px;
-  color: red;
-}
-
-.comment {
-  font-size: 20px;
-  margin-top: 15px;
-  padding-right: 20px;
-  padding-left: 0px;
-}
-
-.comment-description {
-  font-size: 16px;
-  padding-right: 0px;
-  padding-left: 20px;
-  //max-height: 150px; /* 表示したい最大の高さを指定 */
-  //overflow-y: auto; /* 高さを超えた分はスクロールできるように */
-}
-
-.comment-user {
-  font-size: 70%;
-  color: #7d7d7d;
-  margin-left: 10px;
-}
-
+    .comment-description {
+      padding-right: 20px;
+      padding-left: 40px;
+      //max-height: 150px; /* 表示したい最大の高さを指定 */
+      //overflow-y: auto; /* 高さを超えた分はスクロールできるように */
+    }
+    
+    .comment-user {
+      font-size: 80%;
+      color: #7d7d7d;
+      margin-left: 10px;
+    }
+    
   
 //献立（Menu）カレンダー
     

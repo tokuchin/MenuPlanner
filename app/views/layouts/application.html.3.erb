@@ -4,8 +4,6 @@
     <title>MenuPlanner</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
-    <meta name=”viewport” content=”width=device-width,initial-scale=1″>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -34,11 +32,33 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
           <% if logged_in? %>
-            <li><%= link_to "献立カレンダー", menus_path %></li>
-            <li><%= link_to "レシピ集", recipes_path %></li>
-            <li><%= link_to "お気に入りレシピ", favorites_index_path %>
-            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            <li>
+              <%= link_to menus_path do %>
+                <%= image_tag "calender_icon.png" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to recipes_path do %>
+                <%= image_tag "recipe_icon.png" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to favorites_index_path do %>
+                <%= image_tag 'icons/heart.png' %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to logout_path, method: :delete do %>
+                <%= image_tag "icons/logout.png" %>
+              <% end %>
+            </li>
+            <li>
+              <p class="text-white">
+                <%= current_user.name %>さんログイン中 
+              </p>
+            </li>
           <% else %>
             <li>
               <%= link_to new_user_path do %>
@@ -51,14 +71,20 @@
               <% end %>
             </li>
           <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    
-    <% if logged_in? %>    
-        <%= current_user.name %>さんログイン中 
-    <% end %>
     
     <%= yield %>
     
