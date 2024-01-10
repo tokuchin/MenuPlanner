@@ -7,7 +7,7 @@
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
   </head>
@@ -29,15 +29,15 @@
           </button>
           <a class="navbar-brand" href="#">MenuPlanner</a>
         </div>
-    
+        
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+          
           <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <li><%= link_to "献立カレンダー", menus_path %></li>
             <li><%= link_to "レシピ集", recipes_path %></li>
-            <li><%= link_to "お気に入りレシピ", favorites_index_path %>
+            <li><%= link_to "お気に入りレシピ", favorites_index_path %></li>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
           <% else %>
             <li>
@@ -56,8 +56,8 @@
       </div><!-- /.container-fluid -->
     </nav>
     
-    <% if logged_in? %>    
-        <%= current_user.name %>さんログイン中 
+    <% if logged_in? %>
+        <%= current_user.name %>さんログイン中
     <% end %>
     
     <%= yield %>
