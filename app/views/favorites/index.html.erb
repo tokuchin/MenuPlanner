@@ -1,27 +1,59 @@
-<div class="recipe-index-wrapper">
-  <div class="container">
-    <% @favorite_recipes.each do |recipe| %>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="recipe-index-single">
-            <h2 class="recipe-title">
-              <%= recipe.title %>
-            </h2>
-            <h2 class="recipe-author">
-              by <%= recipe.user.name %>　さん
-            </h2>
-            <%= image_tag recipe.image.url %>
-            <%= link_to favorites_path(recipe_id: recipe.id), method: :delete do %>
-              <i class="fa-regular fa-heart recipe-index-favorite-red-icon"></i>
-            <% end %>
-            <%= recipe.favorite_users.count %>
-            <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
-            <p class="recipe-text">
-              <%= recipe.description %>
-            </p>
+<div class="container">
+  <% @favorite_recipes.each do |recipe| %>
+  <div class="recipe-index-single-wrapper">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+          <div class="recipe-index-img">
+            <%= image_tag recipe.image.url, class: 'img-fluid' %> <!-- 画像を親要素に収める -->
           </div>
+        </div>  
+        <div class="col-md-6">
+            <div class="recipe-title-author">
+              <h2 class="recipe-title">
+                <%= recipe.title %>
+              </h2>            
+              <span class="recipe-author">
+                by <%= recipe.user.name %> さん
+              </span>
+              <span class="recipe-created_at">
+                作成日 <%= recipe.created_at.in_time_zone("Tokyo").strftime("%Y-%m-%d") %>
+              </span>    
+            </div> 
+              <p class="recipe-text">
+                <%= recipe.description %>
+              </p>
+              <% if !recipe.favorite_users.include?(current_user) %>
+                <%= link_to favorites_path(recipe_id: recipe.id), method: :post do %>
+                  <i class="fa-regular fa-heart recipe-index-favorite-black-icon"></i>
+                <% end %>
+              <% else %>
+                <%= link_to favorites_path(recipe_id: recipe.id), method: :delete do %>
+                  <i class="fa-regular fa-heart recipe-index-favorite-red-icon"></i>
+                <% end %>
+              <% end %>
+              <%= recipe.favorite_users.count %>
+              
+              <%= link_to new_comment_path(recipe_id: recipe.id) do %>
+                <%= image_tag 'icons/comment.png', class: 'recipe-index-icon' %>
+              <% end %>
+              <%= recipe.comments.count %>
+              <% if recipe.comments.present? %>
+                <p class="comment">
+                  <%= "コメント" %>
+                </p>
+                <ul class="comment-description">
+                  <% recipe.comments.each do |comment| %>
+                    <li>
+                      <%= comment.description %>
+                        <span class="comment-user">
+                          by <%= comment.user.name %> さん (<%= comment.created_at.in_time_zone("Tokyo").strftime("%Y-%m-%d") %>)
+                        </span>
+                    </li>
+                  <% end %>             
+                </ul>
+              <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

@@ -22,7 +22,7 @@ h1, h2 {
 .top-hero-wrapper {
   width: 100vw;
   height: 100vh;
-  background-image: image-url('background-2068215_1280.jpg');
+  background-image: image-url('stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -31,7 +31,7 @@ h1, h2 {
 }
 
 .top-hero-container {
-  padding-top: 220px;
+  padding-top: 140px;
   h1 {
     font-size: 56px;
     margin-bottom: 20px;
@@ -133,15 +133,30 @@ h1, h2 {
 }
 
 
+//application.html.erb
+.logged_in {
+  position: fixed;
+  top: 36px;
+  left: 10px;
+  z-index: 1100; /* Nav-barより上に表示 */
+  font-size: 10px;
+  color: #fff;
+}
+
 
 //レシピ集
 
 .fixed-button {
   position: fixed;
-  top: 70px;
-  right: 55px;
-  z-index: 1000; /* 他の要素より上に表示 */
-  font-size: 150%;
+  top: 7px;
+  left: 160px;
+  z-index: 1100; /* Nav-barより上に表示 */
+  font-size: 100%;
+}
+
+/* 最初の .recipe-index-single-wrapper だけにスタイルを適用 */
+.recipe-index-single-wrapper:first-child {
+  margin-top: 50px;
 }
 
 .recipe-index-single-wrapper {
@@ -243,7 +258,7 @@ h1, h2 {
 //献立（Menu）カレンダー
     
 .calendar-wrapper {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .calendar-day {
@@ -290,12 +305,22 @@ h1, h2 {
 /* スマートフォンサイズのスタイル */
 //@media screen and (max-device-width: 768px) {
 @media screen and (max-width: 700px) {
-  .calendar-day {
-    font-size: 36px;
-    /* 他のスタイルがあればそれらと併記 */
-  }
-  
+//  .calendar-day {
+//    font-size: 36px;
+//    /* 他のスタイルがあればそれらと併記 */
+//  }
   .calendar-menu {
-    font-size: 24px;
+    font-size: 10px;
   }
+}
+
+
+// show_menus
+.recipe-index-single-wrapper-in-show-menus {
+  margin-bottom: 0px;
+}
+
+.family-comments-wrapper {
+  background-color: #ffffe0;
+  margin-bottom: 0px;
 }
